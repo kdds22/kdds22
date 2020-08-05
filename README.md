@@ -1,5 +1,3 @@
-### Hi there 👋
-
 <img width="auto" src="https://www.cpqd.com.br/wp-content/uploads/2019/04/banner-IA.jpg">
 
 
