@@ -1,4 +1,8 @@
 <a href="https://app.daily.dev/klausdell"><img align="left" src="https://api.daily.dev/devcards/cecd62bd073e443ea95a7d9b698ff4e8.png?r=8yd" width="400" alt="Klaus Dellano's Dev Card"/></a>
+<a href="https://app.daily.dev/DailyDevTips"><img align="left" src="https://github.com/kdds22/kdds22/blob/master/devcard.svg" width="400" alt="Klaus Dellano's Dev Card"/></a>
+
+<a href="https://app.daily.dev/klausdell"><img align="left" src="https://github.com/kdds22/kdds22/blob/master/devcard.svg" width="400" alt="Klaus Dellano's Dev Card"/></a>
+
 
 # Klaus Dellano
 
