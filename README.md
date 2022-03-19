@@ -1,6 +1,3 @@
-<a href="https://app.daily.dev/klausdell"><img align="left" src="https://github.com/kdds22/kdds22/blob/master/devcard.svg" width="400" alt="Klaus Dellano's Dev Card"/></a>
-
-
 # Klaus Dellano
 
 ## Olá pessoal 👋
@@ -28,6 +25,8 @@
 <img alt="Git" src="https://img.shields.io/badge/git-%23F05033.svg?&style=for-the-badge&logo=git&logoColor=white"/>
 
 <br/><br/><br/><br/>
+<a href="https://app.daily.dev/klausdell"><img align="left" src="https://github.com/kdds22/kdds22/blob/master/devcard.svg" width="400" alt="Klaus Dellano's Dev Card"/></a>
+
 ### Estatísticas 🏆
 
 ![GitHub stats](https://github-readme-stats.vercel.app/api?username=kdds22&show_icons=true&theme=tokyonight&count_private=true)
