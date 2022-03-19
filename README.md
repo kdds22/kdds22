@@ -26,11 +26,10 @@
 
 <br/><br/><br/><br/>
 
-<a href="https://app.daily.dev/klausdell"><img align="left" src="https://github.com/kdds22/kdds22/blob/master/devcard.svg" width="400" alt="Klaus Dellano's Dev Card"/></a>
-
 ### Estatísticas 🏆
 ![GitHub stats](https://github-readme-stats.vercel.app/api?username=kdds22&show_icons=true&theme=tokyonight&count_private=true)
 
+<a href="https://app.daily.dev/klausdell"><img align="left" src="https://github.com/kdds22/kdds22/blob/master/devcard.svg" width="400" alt="Klaus Dellano's Dev Card"/></a>
  
  ### Misc
  
