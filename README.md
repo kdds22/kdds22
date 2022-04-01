@@ -2,7 +2,7 @@
 
 ## Olá pessoal 👋
 
-:bowtie: Me chamo Klaus Dellano, 25 anos, resido em Brusque/SC (natural de Aracaju/SE)<br/>
+:bowtie: Me chamo Klaus Dellano, 26 anos, resido em Brusque/SC (natural de Aracaju/SE)<br/>
 :satisfied: Sou apaixonado por criar soluções utilizando tecnologia.<br/>
  :rocket:  &nbsp; Atuo como Android Developer (Kotlin), TechLeader e Analista na <img alt="HAVAN" src="https://img.shields.io/badge/HAVAN-%230F1689.svg?&style=for-the-badge&logo=hugo&logoColor=white"/>
  <br/><br/> :purple_heart: &nbsp; Buscando projetos em Front-end usando React, Back-End usando C#, Mobile usando Kotlin e aplicações com RFID!
