@@ -29,7 +29,7 @@
 ### Estatísticas 🏆
 ![GitHub stats](https://github-readme-stats.vercel.app/api?username=kdds22&show_icons=true&theme=tokyonight&count_private=true)
 
-<a href="https://app.daily.dev/klausdell"><img align="left" src="https://github.com/kdds22/kdds22/blob/master/devcard.svg" width="400" alt="Klaus Dellano's Dev Card"/></a>
+<a href="https://app.daily.dev/klausdell"><img align="left" src="https://api.daily.dev/devcards/v2/ZcR-6Ci7Q.png?type=default&r=6xv" width="356" alt="Klaus Dellano's Dev Card"/></a>
  
  ### Misc
  
