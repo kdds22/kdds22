@@ -11,7 +11,7 @@
 <img alt="Kotlin" src="https://img.shields.io/badge/kotlin-%230095D5.svg?&style=for-the-badge&logo=kotlin&logoColor=white"/>
 <img alt="RFID" src="https://img.shields.io/badge/Rfid-%23e6e6fa.svg?&style=for-the-badge&logo=sonarsource&logoColor=black"/>
 <img alt="Python" src="https://img.shields.io/badge/python-%2314354C.svg?&style=for-the-badge&logo=python&logoColor=white"/> 
-<img alt="OpenAIAPI" src="https://img.shields.io/badge/-OpenAI%20API-eee?style=flat-square&logo=openai&logoColor=412991"/>
+<img alt="OpenAIAPI" src="https://img.shields.io/badge/-OpenAI%20API-eee?style=for-the-badge&logo=openai&logoColor=412991"/>
 <img alt="DeepL" src="https://img.shields.io/badge/DeepL-0F2B46?logo=deepl&logoColor=fff&style=for-the-badge"/>
 <img alt="UML" src="https://img.shields.io/badge/UML-FABD14?logo=uml&logoColor=000&style=for-the-badge"/>
 <img alt="Zebra" src="https://img.shields.io/badge/Zebra%20Technologies-000?logo=zebratechnologies&logoColor=fff&style=for-the-badge"/>
@@ -48,8 +48,13 @@
  
  ### Misc
  
- :dart: &nbsp; Futuro: Certificação Android Core Google Developer, Certificação LPCI, Aprofundar aplicação do RFID nos negócios e ajudar outros devs apresentando cases de sucesso e quais soluções aplicamos para resolver "os problemas"!
- <br/> 💬  &nbsp; Sobre mim: Curto tecnologias/gadgets, EDM, games, seriados, esportes (radicais/trilha).
+ :dart: &nbsp; Futuro: 
+ <br/> &nbsp; - Certificação Android Core Google Developer
+ <br/> &nbsp; - Certificação LPCI
+ <br/> &nbsp; - Diminuição de custos e agilizar processos com LLMs
+ <br/> &nbsp; - Aprofundar aplicação do RFID nos negócios e ajudar outros devs apresentando cases de sucesso e quais soluções aplicamos para resolver "os problemas"!
+ <br/> <br/>
+💬  &nbsp; Sobre mim: Curto tecnologias/gadgets, EDM, seriados, esportes (radicais e trilhas).
  
  ### Contato
  :email: &nbsp; Entre em contato comigo: [![Linkedin Badge](https://img.shields.io/badge/LinkedIn-klaus--dellano-blue)](https://www.linkedin.com/in/klaus-dellano/) 
