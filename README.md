@@ -2,15 +2,16 @@
 
 ## Olá pessoal 👋
 
-:bowtie: Klaus Dellano por aqui! Tudo tranquilo? 28 anos e residindo em Brusque/SC (natural de Aracaju/SE)<br/>
+:bowtie: Klaus Dellano por aqui! Tudo tranquilo? 28 anos e residindo em Brusque/SC (natural de Aracaju/SE) (DISC = IDSC) (ENTP-T) <br/>
 :satisfied: Sou apaixonado por criar soluções... seja repensando processos, ou com ação manual, ou usando tecnologia (resolvendo o problema, perfeito).<br/>
- :rocket:  &nbsp; Atuo como Android Developer (Kotlin), TechLeader, Analista, 'Advogado do Diabo', Agilista... quase que um 'Severino' na <img alt="HAVAN" src="https://img.shields.io/badge/HAVAN-%230F1689.svg?&style=for-the-badge&logo=hugo&logoColor=white"/> (o que tiver pra fazer, e tiver tempo? estou dentro...)
+ :rocket:  &nbsp; Atuo como Android Developer (Kotlin), TechLeader, Analista, Agilista (quando o time precisa)... quase que um 'Severino' na <img alt="HAVAN" src="https://img.shields.io/badge/HAVAN-%230F1689.svg?&style=for-the-badge&logo=hugo&logoColor=white"/> (o que tiver pra fazer, e tiver tempo? estou dentro...)
  <br/><br/> :purple_heart: &nbsp; Buscando projetos Mobile (Android/Kotlin), Back-End usando C# ("plus" se usar RFID)
  <br/><br/><br/> :computer: &nbsp; Stack atual: 
 <img alt="Android" src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" />
 <img alt="Kotlin" src="https://img.shields.io/badge/kotlin-%230095D5.svg?&style=for-the-badge&logo=kotlin&logoColor=white"/>
 <img alt="RFID" src="https://img.shields.io/badge/Rfid-%23e6e6fa.svg?&style=for-the-badge&logo=sonarsource&logoColor=black"/>
 <img alt="Python" src="https://img.shields.io/badge/python-%2314354C.svg?&style=for-the-badge&logo=python&logoColor=white"/>
+<img alt="OpenAIAPI" src="https://img.shields.io/badge/-OpenAI%20API-eee?style=flat-square&logo=openai&logoColor=412991 />
 <img alt="DeepL" src="https://img.shields.io/badge/DeepL-0F2B46?logo=deepl&logoColor=fff&style=for-the-badge"/>
 <img alt="UML" src="https://img.shields.io/badge/UML-FABD14?logo=uml&logoColor=000&style=for-the-badge"/>
 <img alt="Zebra" src="https://img.shields.io/badge/Zebra%20Technologies-000?logo=zebratechnologies&logoColor=fff&style=for-the-badge"/>
