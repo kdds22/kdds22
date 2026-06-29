@@ -117,13 +117,16 @@
   /* ---------- Transferir BPM para o cadastro (Épico 4) ---------- */
   function useBpm() {
     if (!currentBpm) return;
-    Store.setPendingBpm(currentBpm);
 
     // Se o formulário de cadastro já existir na página, preenche direto.
+    // Só recorremos ao pendingBpm como fallback (form ausente) para não
+    // deixar um valor preso no storage que sobrescreveria edições futuras.
     const bpmField = document.getElementById("trackBpm");
     if (bpmField) {
       bpmField.value = currentBpm;
       bpmField.dispatchEvent(new Event("input", { bubbles: true }));
+    } else {
+      Store.setPendingBpm(currentBpm);
     }
 
     $feedback.textContent = `✓ ${currentBpm} BPM guardado para o cadastro`;

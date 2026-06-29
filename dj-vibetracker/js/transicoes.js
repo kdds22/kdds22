@@ -24,7 +24,7 @@
   }
   function metaLine(t) {
     const bpm = t.bpm ? App.blurable(`${t.bpm} BPM`, "BPM") : "";
-    const key = t.key ? App.blurable(t.key, "Tom") : "";
+    const key = t.key ? App.blurable(escapeHtml(t.key), "Tom") : "";
     const sep = bpm && key ? " · " : "";
     return bpm || key ? `<span class="recipe__meta">${bpm}${sep}${key}</span>` : "";
   }
