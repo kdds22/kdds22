@@ -160,8 +160,62 @@
     </section>
 
     <section class="view" id="view-transicoes" data-view="transicoes" hidden>
-      <h2 class="view__title">Transições</h2>
-      <p class="view__placeholder">🚧 Épico 3 — em construção (Planner &amp; Randomizer).</p>
+      <h2 class="view__title">Planejamento de Transições</h2>
+      <p class="view__hint">Monte o plano de volume, EQ e efeitos para a troca entre duas faixas.</p>
+
+      <!-- Feature 3.2: Randomizer Challenge -->
+      <article class="card challenge">
+        <header class="card__header">
+          <h3 class="card__title">Desafio de Treino</h3>
+          <span class="card__badge">RANDOM</span>
+        </header>
+        <button class="btn btn--primary" id="challengeGen" type="button">🎲 Gerar Desafio de Treino</button>
+        <div class="challenge__out" id="challengeOut"></div>
+      </article>
+
+      <!-- Feature 3.1: Transition Planner -->
+      <article class="card planner">
+        <header class="card__header">
+          <h3 class="card__title">Transition Planner</h3>
+          <span class="card__badge">A → B</span>
+        </header>
+
+        <div class="planner__decks">
+          <label class="field">
+            <span>Música A (saindo)</span>
+            <select id="trackA" class="select"></select>
+          </label>
+          <label class="field">
+            <span>Música B (entrando)</span>
+            <select id="trackB" class="select"></select>
+          </label>
+        </div>
+
+        <div class="planner__cols">
+          <fieldset class="checks">
+            <legend>Na Música A</legend>
+            <label><input type="checkbox" data-deck="a" value="Cortar Low" /> Cortar Low</label>
+            <label><input type="checkbox" data-deck="a" value="Echo no Outro" /> Echo no Outro</label>
+            <label><input type="checkbox" data-deck="a" value="Reverb no Break" /> Reverb no Break</label>
+          </fieldset>
+          <fieldset class="checks">
+            <legend>Na Música B</legend>
+            <label><input type="checkbox" data-deck="b" value="Loop de Entrada" /> Loop de Entrada</label>
+            <label><input type="checkbox" data-deck="b" value="Subir Fader" /> Subir Fader</label>
+          </fieldset>
+        </div>
+
+        <label class="field">
+          <span>Observações (opcional)</span>
+          <input type="text" id="planNote" placeholder="ex: trocar no 2º drop" />
+        </label>
+
+        <button class="btn btn--primary" id="planSave" type="button">💾 Salvar Receita</button>
+      </article>
+
+      <!-- Lista de receitas salvas -->
+      <h3 class="section-label">Receitas salvas</h3>
+      <div class="recipes" id="recipesList"></div>
     </section>
 
     <section class="view" id="view-acervo" data-view="acervo" hidden>
@@ -209,5 +263,6 @@
   <script src="js/app.js" defer></script>
   <script src="js/taptempo.js" defer></script>
   <script src="js/estrutura.js" defer></script>
+  <script src="js/transicoes.js" defer></script>
 </body>
 </html>

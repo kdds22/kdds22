@@ -256,6 +256,65 @@ body {
 .calc__beats { font-size: 13px; color: var(--text-dim); font-variant-numeric: tabular-nums; }
 .calc__hint { text-align: center; font-size: 12px; color: var(--text-faint); margin-top: 10px; min-height: 16px; }
 
+/* ===================== TRANSIÇÕES (Épico 3) ===================== */
+.section-label {
+  font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--text-dim); margin: 24px 0 12px;
+}
+.empty { color: var(--text-faint); font-size: 14px; text-align: center; padding: 20px; }
+
+/* Dropdowns */
+.select {
+  padding: 10px 12px; border-radius: var(--radius-sm);
+  background: var(--bg); border: 1px solid var(--border); color: var(--text);
+  font-size: 15px; width: 100%; appearance: none; -webkit-appearance: none;
+}
+.select:focus { outline: none; border-color: var(--accent); }
+.select:disabled { color: var(--text-faint); }
+
+/* Planner */
+.planner { margin-top: var(--gap); }
+.planner__decks { display: grid; gap: 12px; margin-bottom: 16px; }
+.planner__cols { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+.checks {
+  border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.checks legend { font-size: 12px; font-weight: 700; color: var(--accent-2); padding: 0 6px; }
+.checks label { display: flex; align-items: center; gap: 8px; font-size: 14px; cursor: pointer; }
+.checks input { width: 18px; height: 18px; accent-color: var(--accent); }
+.planner .field { margin-bottom: 16px; }
+.planner .btn--primary { width: 100%; }
+
+/* Receitas salvas */
+.recipes { display: flex; flex-direction: column; gap: 12px; }
+.recipe { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; }
+.recipe__head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 12px; }
+.recipe__route { font-size: 14px; font-weight: 700; }
+.recipe__route b { color: var(--accent); }
+.recipe__del { background: none; border: none; color: var(--text-faint); font-size: 16px; cursor: pointer; padding: 4px; }
+.recipe__del:active { color: var(--danger); }
+.recipe__cols { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.recipe__deck { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dim); }
+.recipe__cols ul { list-style: none; margin-top: 6px; font-size: 13px; }
+.recipe__cols li { padding: 2px 0; color: var(--ok); }
+.recipe__none { color: var(--text-faint) !important; }
+.recipe__note { margin-top: 12px; font-size: 13px; color: var(--text-dim); }
+.recipe__meta { font-size: 12px; color: var(--text-dim); }
+
+/* Desafio */
+.challenge { margin-top: var(--gap); }
+.challenge .btn--primary { width: 100%; }
+.challenge__out { margin-top: 14px; }
+.challenge__card {
+  background: linear-gradient(135deg, rgba(177,75,255,0.14), rgba(255,75,125,0.1));
+  border: 1px solid var(--accent); border-radius: var(--radius); padding: 18px;
+}
+.challenge__lead { font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+.challenge__text { font-size: 16px; line-height: 1.5; margin-top: 6px; }
+.challenge__text em { color: var(--accent-2); font-style: normal; font-weight: 700; }
+.challenge__meta { margin-top: 10px; display: flex; gap: 12px; flex-wrap: wrap; }
+
 /* ===================== BOTTOM NAV ===================== */
 .bottom-nav {
   position: fixed; bottom: 0; left: 0; right: 0; z-index: 30;

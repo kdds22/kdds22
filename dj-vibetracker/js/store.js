@@ -7,7 +7,7 @@
 const Store = (() => {
   const KEY = "djvibetracker.v1";
 
-  const EMPTY = { tracks: [], setlists: [], reviews: [] };
+  const EMPTY = { tracks: [], setlists: [], reviews: [], transitions: [] };
 
   /** Lê o estado completo do localStorage (com fallback seguro). */
   function read() {
@@ -44,9 +44,24 @@ const Store = (() => {
   }
 
   // ---- Acessores por coleção ----
-  function getTracks()   { return read().tracks; }
-  function getSetlists() { return read().setlists; }
-  function getReviews()  { return read().reviews; }
+  function getTracks()      { return read().tracks; }
+  function getSetlists()    { return read().setlists; }
+  function getReviews()     { return read().reviews; }
+  function getTransitions() { return read().transitions; }
+
+  // ---- Transições (Épico 3) ----
+  function addTransition(recipe) {
+    const state = read();
+    const item = { id: uuid(), createdAt: Date.now(), ...recipe };
+    state.transitions.unshift(item);
+    write(state);
+    return item;
+  }
+  function removeTransition(id) {
+    const state = read();
+    state.transitions = state.transitions.filter((t) => t.id !== id);
+    write(state);
+  }
 
   /* ---- Campo volátil: BPM pendente vindo do Tap Tempo ----
      Usado como "ponte" entre a Feature 1.1 e o formulário de
@@ -66,7 +81,8 @@ const Store = (() => {
 
   return {
     read, write, uuid,
-    getTracks, getSetlists, getReviews,
+    getTracks, getSetlists, getReviews, getTransitions,
+    addTransition, removeTransition,
     setPendingBpm, consumePendingBpm,
   };
 })();
