@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#0d0d14" />
+  <meta name="description" content="DJ VibeTracker — App de estudo para DJs iniciantes: beatmatching, estrutura musical, setlists e autoavaliação." />
+  <title>DJ VibeTracker 🎧</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Chart.js via CDN (usado no Épico 5 - Vibe Curve) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+</head>
+<body>
+  <!-- ===================== HEADER ===================== -->
+  <header class="app-header">
+    <div class="app-header__brand">
+      <span class="app-header__logo" aria-hidden="true">🎧</span>
+      <div>
+        <h1 class="app-header__title">DJ VibeTracker</h1>
+        <p class="app-header__subtitle">Treino de DJ &middot; mixe de ouvido</p>
+      </div>
+    </div>
+
+    <!-- Feature 1.2 (placeholder do toggle global - será ativado no Épico 1.2) -->
+    <label class="blind-toggle" title="Modo Cego: esconde BPM e tom para treinar de ouvido">
+      <input type="checkbox" id="blindModeToggle" />
+      <span class="blind-toggle__track"><span class="blind-toggle__thumb"></span></span>
+      <span class="blind-toggle__label">Modo Cego</span>
+    </label>
+  </header>
+
+  <!-- ===================== CONTEÚDO ===================== -->
+  <main class="app-main" id="appMain">
+
+    <!-- ---------- SEÇÃO: TREINO (Épico 1) ---------- -->
+    <section class="view" id="view-treino" data-view="treino">
+      <h2 class="view__title">Treino Auditivo &amp; Beatmatching</h2>
+      <p class="view__hint">Desenvolva sua percepção rítmica. Toque no botão acompanhando a batida da música.</p>
+
+      <!-- Feature 1.1: Tap Tempo -->
+      <article class="card taptempo">
+        <header class="card__header">
+          <h3 class="card__title">Tap Tempo</h3>
+          <span class="card__badge">BPM</span>
+        </header>
+
+        <div class="taptempo__display">
+          <span class="taptempo__bpm" id="tapBpm" aria-live="polite">--</span>
+          <span class="taptempo__unit">BPM</span>
+        </div>
+
+        <p class="taptempo__meta">
+          <span id="tapCount">0</span> toques &middot;
+          <span id="tapStability">aguardando…</span>
+        </p>
+
+        <button class="taptempo__pad" id="tapPad" type="button" aria-label="Toque acompanhando a batida">
+          <span class="taptempo__pad-text">TAP</span>
+          <span class="taptempo__pad-hint">toque no ritmo</span>
+        </button>
+
+        <div class="taptempo__actions">
+          <button class="btn btn--ghost" id="tapReset" type="button">↺ Reset</button>
+          <button class="btn btn--primary" id="tapUse" type="button" disabled>➜ Usar no cadastro</button>
+        </div>
+        <p class="taptempo__feedback" id="tapFeedback" role="status"></p>
+      </article>
+    </section>
+
+    <!-- ---------- DEMAIS SEÇÕES (placeholders dos próximos épicos) ---------- -->
+    <section class="view" id="view-estrutura" data-view="estrutura" hidden>
+      <h2 class="view__title">Estrutura Musical</h2>
+      <p class="view__placeholder">🚧 Épico 2 — em construção (Timestamp Sync &amp; Calculadora de Compassos).</p>
+    </section>
+
+    <section class="view" id="view-transicoes" data-view="transicoes" hidden>
+      <h2 class="view__title">Transições</h2>
+      <p class="view__placeholder">🚧 Épico 3 — em construção (Planner &amp; Randomizer).</p>
+    </section>
+
+    <section class="view" id="view-acervo" data-view="acervo" hidden>
+      <h2 class="view__title">Acervo</h2>
+      <p class="view__placeholder">🚧 Épico 4 — em construção (Scraping Board / cadastro de faixas).</p>
+    </section>
+
+    <section class="view" id="view-setlist" data-view="setlist" hidden>
+      <h2 class="view__title">Setlist Flow</h2>
+      <p class="view__placeholder">🚧 Épico 5 — em construção (Set Builder &amp; Vibe Curve).</p>
+    </section>
+
+    <section class="view" id="view-review" data-view="review" hidden>
+      <h2 class="view__title">Autoavaliação</h2>
+      <p class="view__placeholder">🚧 Épico 6 — em construção (Set Review Journal).</p>
+    </section>
+  </main>
+
+  <!-- ===================== NAVEGAÇÃO INFERIOR (mobile-first) ===================== -->
+  <nav class="bottom-nav" id="bottomNav" aria-label="Navegação principal">
+    <button class="bottom-nav__item is-active" data-target="treino" type="button">
+      <span class="bottom-nav__icon">🥁</span><span class="bottom-nav__text">Treino</span>
+    </button>
+    <button class="bottom-nav__item" data-target="estrutura" type="button">
+      <span class="bottom-nav__icon">🎚️</span><span class="bottom-nav__text">Estrutura</span>
+    </button>
+    <button class="bottom-nav__item" data-target="transicoes" type="button">
+      <span class="bottom-nav__icon">🔀</span><span class="bottom-nav__text">Transições</span>
+    </button>
+    <button class="bottom-nav__item" data-target="acervo" type="button">
+      <span class="bottom-nav__icon">💿</span><span class="bottom-nav__text">Acervo</span>
+    </button>
+    <button class="bottom-nav__item" data-target="setlist" type="button">
+      <span class="bottom-nav__icon">📈</span><span class="bottom-nav__text">Setlist</span>
+    </button>
+    <button class="bottom-nav__item" data-target="review" type="button">
+      <span class="bottom-nav__icon">📝</span><span class="bottom-nav__text">Review</span>
+    </button>
+  </nav>
+
+  <!-- ===================== TOAST ===================== -->
+  <div class="toast" id="toast" role="alert" aria-live="assertive"></div>
+
+  <script src="js/store.js" defer></script>
+  <script src="js/app.js" defer></script>
+  <script src="js/taptempo.js" defer></script>
+</body>
+</html>
