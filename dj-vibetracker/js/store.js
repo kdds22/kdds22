@@ -49,6 +49,31 @@ const Store = (() => {
   function getReviews()     { return read().reviews; }
   function getTransitions() { return read().transitions; }
 
+  // ---- Faixas / Acervo (Épico 4) ----
+  function addTrack(data) {
+    const state = read();
+    const item = { id: uuid(), createdAt: Date.now(), status: "ouvir", ...data };
+    state.tracks.unshift(item);
+    write(state);
+    return item;
+  }
+  function updateTrack(id, patch) {
+    const state = read();
+    const t = state.tracks.find((x) => x.id === id);
+    if (!t) return null;
+    Object.assign(t, patch);
+    write(state);
+    return t;
+  }
+  function removeTrack(id) {
+    const state = read();
+    state.tracks = state.tracks.filter((t) => t.id !== id);
+    write(state);
+  }
+  function setTrackStatus(id, status) {
+    return updateTrack(id, { status });
+  }
+
   // ---- Transições (Épico 3) ----
   function addTransition(recipe) {
     const state = read();
@@ -82,6 +107,7 @@ const Store = (() => {
   return {
     read, write, uuid,
     getTracks, getSetlists, getReviews, getTransitions,
+    addTrack, updateTrack, removeTrack, setTrackStatus,
     addTransition, removeTransition,
     setPendingBpm, consumePendingBpm,
   };

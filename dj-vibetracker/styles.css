@@ -315,6 +315,62 @@ body {
 .challenge__text em { color: var(--accent-2); font-style: normal; font-weight: 700; }
 .challenge__meta { margin-top: 10px; display: flex; gap: 12px; flex-wrap: wrap; }
 
+/* ===================== ACERVO / SCRAPING BOARD (Épico 4) ===================== */
+.track-form__grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;
+}
+.track-form__wide { grid-column: 1 / -1; }
+.track-form .select { font-size: 15px; }
+.track-form__save { width: 100%; }
+
+.board { display: flex; flex-direction: column; gap: var(--gap); margin-top: var(--gap); }
+.board__col {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 14px;
+}
+.board__head {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 10px;
+}
+.board__title { font-size: 13px; font-weight: 800; letter-spacing: 0.02em; }
+.board__count {
+  font-size: 12px; font-weight: 700; color: var(--text-dim);
+  background: var(--bg-elev-2); border-radius: 999px; padding: 2px 9px;
+  font-variant-numeric: tabular-nums;
+}
+.board__cards { display: flex; flex-direction: column; gap: 10px; }
+
+.track {
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;
+  background: var(--bg-elev-2); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 12px;
+}
+.track__main { min-width: 0; flex: 1; }
+.track__title { font-size: 14px; font-weight: 700; word-break: break-word; }
+.track__meta {
+  font-size: 12px; color: var(--text-dim); margin-top: 4px;
+  font-variant-numeric: tabular-nums;
+}
+.track__meta .blurable { color: var(--text); font-weight: 700; }
+.track__energy { color: var(--warn); letter-spacing: 1px; }
+.track__link {
+  display: inline-block; margin-top: 6px; font-size: 12px; font-weight: 600;
+  color: var(--accent-2); text-decoration: none;
+}
+.track__link:active { opacity: 0.7; }
+
+.track__actions { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+.track__moves { display: flex; gap: 6px; }
+.track__move {
+  background: var(--surface); border: 1px solid var(--border); color: var(--text);
+  border-radius: 999px; padding: 5px 9px; font-size: 12px; font-weight: 700;
+  cursor: pointer; transition: all var(--t-fast); white-space: nowrap;
+  -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+}
+.track__move:active { transform: scale(0.94); border-color: var(--accent); }
+.track__del { background: none; border: none; color: var(--text-faint); font-size: 15px; cursor: pointer; padding: 2px 4px; }
+.track__del:active { color: var(--danger); }
+
 /* ===================== BOTTOM NAV ===================== */
 .bottom-nav {
   position: fixed; bottom: 0; left: 0; right: 0; z-index: 30;

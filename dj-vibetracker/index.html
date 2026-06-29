@@ -219,8 +219,56 @@
     </section>
 
     <section class="view" id="view-acervo" data-view="acervo" hidden>
-      <h2 class="view__title">Acervo</h2>
-      <p class="view__placeholder">🚧 Épico 4 — em construção (Scraping Board / cadastro de faixas).</p>
+      <h2 class="view__title">Curadoria &amp; Acervo</h2>
+      <p class="view__hint">Garimpe no Bandcamp, SoundCloud e YouTube. Cadastre a faixa, acompanhe o status até ela cair no Rekordbox.</p>
+
+      <!-- Feature 4.1: formulário de cadastro -->
+      <article class="card track-form">
+        <header class="card__header">
+          <h3 class="card__title">Adicionar faixa</h3>
+          <span class="card__badge">GARIMPO</span>
+        </header>
+
+        <div class="track-form__grid">
+          <label class="field track-form__wide">
+            <span>Título *</span>
+            <input type="text" id="trackTitle" placeholder="ex: Strobe" />
+          </label>
+          <label class="field track-form__wide">
+            <span>Artista</span>
+            <input type="text" id="trackArtist" placeholder="ex: Deadmau5" />
+          </label>
+          <label class="field">
+            <span>BPM</span>
+            <input type="number" id="trackBpm" inputmode="numeric" min="40" max="300" placeholder="126" />
+          </label>
+          <label class="field">
+            <span>Tom (Camelot)</span>
+            <input type="text" id="trackKey" placeholder="ex: 8A" />
+          </label>
+          <label class="field">
+            <span>Energia (1–5)</span>
+            <input type="number" id="trackEnergy" inputmode="numeric" min="1" max="5" placeholder="3" />
+          </label>
+          <label class="field">
+            <span>Status</span>
+            <select id="trackStatus" class="select">
+              <option value="ouvir">1 · Para Ouvir</option>
+              <option value="aprovar">2 · Aprovar/Comprar</option>
+              <option value="baixada">3 · Baixada/Rekordbox</option>
+            </select>
+          </label>
+          <label class="field track-form__wide">
+            <span>Link de Referência (URL)</span>
+            <input type="url" id="trackUrl" inputmode="url" placeholder="https://soundcloud.com/…" />
+          </label>
+        </div>
+
+        <button class="btn btn--primary track-form__save" id="trackSave" type="button">➕ Adicionar ao acervo</button>
+      </article>
+
+      <!-- Scraping Board (Kanban por status) -->
+      <div class="board" id="board"></div>
     </section>
 
     <section class="view" id="view-setlist" data-view="setlist" hidden>
@@ -263,6 +311,7 @@
   <script src="js/app.js" defer></script>
   <script src="js/taptempo.js" defer></script>
   <script src="js/estrutura.js" defer></script>
+  <script src="js/acervo.js" defer></script>
   <script src="js/transicoes.js" defer></script>
 </body>
 </html>
