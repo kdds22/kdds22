@@ -6,7 +6,7 @@
 
 (() => {
   const MAX_TAPS = 8;        // janela máxima considerada na média
-  const MIN_TAPS_FOR_BPM = 2; // a partir de 2 toques já há 1 delta
+  const MIN_TAPS_FOR_BPM = 4; // spec: média dos últimos 4 a 8 toques
   const RESET_TIMEOUT_MS = 2500; // inatividade que zera a contagem
 
   let taps = [];             // timestamps (ms) dos toques recentes
@@ -66,8 +66,15 @@
       $use.disabled = false;
     } else {
       currentBpm = null;
-      $bpm.textContent = taps.length > 0 ? "…" : "--";
-      $stability.textContent = taps.length > 0 ? "continue tocando…" : "aguardando…";
+      if (taps.length === 0) {
+        $bpm.textContent = "--";
+        $stability.textContent = "aguardando…";
+      } else {
+        // ainda não atingiu o mínimo de toques para uma média confiável
+        const restantes = MIN_TAPS_FOR_BPM - taps.length;
+        $bpm.textContent = "…";
+        $stability.textContent = `faltam ${restantes} toque${restantes > 1 ? "s" : ""}…`;
+      }
       $use.disabled = true;
     }
   }
