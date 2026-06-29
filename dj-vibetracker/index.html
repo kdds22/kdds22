@@ -273,7 +273,23 @@
 
     <section class="view" id="view-setlist" data-view="setlist" hidden>
       <h2 class="view__title">Setlist Flow</h2>
-      <p class="view__placeholder">🚧 Épico 5 — em construção (Set Builder &amp; Vibe Curve).</p>
+      <p class="view__hint">Monte a ordem do set. Arraste para reordenar (ou use as setas) e garanta a fluidez da energia.</p>
+
+      <!-- Feature 5.1: Construtor de Set -->
+      <article class="card setlist">
+        <header class="card__header">
+          <h3 class="card__title">Meu Set</h3>
+          <div class="setlist__head-actions">
+            <span class="card__badge" id="setCount">0 faixas</span>
+            <button class="setlist__clear" id="setClear" type="button" title="Limpar set">🗑 Limpar</button>
+          </div>
+        </header>
+        <ol class="setlist__list" id="setlistList"></ol>
+      </article>
+
+      <!-- Biblioteca para adicionar ao set -->
+      <h3 class="section-label">Biblioteca</h3>
+      <div class="library" id="library"></div>
     </section>
 
     <section class="view" id="view-review" data-view="review" hidden>
@@ -313,5 +329,6 @@
   <script src="js/estrutura.js" defer></script>
   <script src="js/acervo.js" defer></script>
   <script src="js/transicoes.js" defer></script>
+  <script src="js/setlist.js" defer></script>
 </body>
 </html>

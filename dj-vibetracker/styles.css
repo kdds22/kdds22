@@ -371,6 +371,62 @@ body {
 .track__del { background: none; border: none; color: var(--text-faint); font-size: 15px; cursor: pointer; padding: 2px 4px; }
 .track__del:active { color: var(--danger); }
 
+/* ===================== SETLIST FLOW (Épico 5 · Feature 5.1) ===================== */
+.setlist__head-actions { display: flex; align-items: center; gap: 10px; }
+.setlist__clear {
+  background: none; border: 1px solid var(--border); color: var(--text-dim);
+  border-radius: 999px; padding: 4px 10px; font-size: 12px; font-weight: 600; cursor: pointer;
+}
+.setlist__clear:active { color: var(--danger); border-color: var(--danger); }
+
+.setlist__list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.setlist__empty { text-align: center; }
+
+.setlist__item {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--bg-elev-2); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 10px 12px;
+  transition: opacity var(--t-fast), box-shadow var(--t-fast);
+}
+.setlist__item.is-dragging { opacity: 0.4; box-shadow: 0 0 0 2px var(--accent); }
+.setlist__pos {
+  font-size: 13px; font-weight: 800; color: var(--accent); min-width: 18px; text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+.setlist__grip { color: var(--text-faint); cursor: grab; font-size: 16px; touch-action: none; }
+.setlist__item:active .setlist__grip { cursor: grabbing; }
+.setlist__info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.setlist__title { font-size: 14px; font-weight: 700; word-break: break-word; }
+.setlist__meta { font-size: 12px; color: var(--text-dim); font-variant-numeric: tabular-nums; }
+.setlist__meta .blurable { color: var(--text); font-weight: 700; }
+.setlist__btns { display: flex; align-items: center; gap: 4px; }
+.setlist__mv, .setlist__rm {
+  background: var(--surface); border: 1px solid var(--border); color: var(--text);
+  border-radius: 8px; width: 30px; height: 30px; font-size: 13px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+}
+.setlist__mv:active { border-color: var(--accent); }
+.setlist__mv:disabled { opacity: 0.35; cursor: not-allowed; }
+.setlist__rm:active { color: var(--danger); border-color: var(--danger); }
+
+/* Biblioteca */
+.library { display: flex; flex-direction: column; gap: 8px; }
+.library__item {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 12px;
+}
+.library__info { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.library__title { font-size: 14px; font-weight: 700; word-break: break-word; }
+.library__add {
+  flex-shrink: 0; background: var(--accent); color: #fff; border: none;
+  border-radius: 999px; padding: 8px 14px; font-size: 13px; font-weight: 700; cursor: pointer;
+  -webkit-tap-highlight-color: transparent; touch-action: manipulation; transition: transform var(--t-fast);
+}
+.library__add:active { transform: scale(0.95); }
+.library__add:disabled { background: var(--bg-elev-2); color: var(--ok); cursor: default; }
+
 /* ===================== BOTTOM NAV ===================== */
 .bottom-nav {
   position: fixed; bottom: 0; left: 0; right: 0; z-index: 30;

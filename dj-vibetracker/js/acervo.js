@@ -61,6 +61,7 @@
     clearForm();
     render();
     window.Transicoes?.refresh(); // mantém os decks do Épico 3 em dia
+    window.Setlist?.refresh();     // e a biblioteca/set do Épico 5
   }
 
   function clearForm() {
@@ -129,6 +130,7 @@
       Store.setTrackStatus(mv.dataset.id, mv.dataset.move);
       render();
       window.Transicoes?.refresh();
+      window.Setlist?.refresh();
       return;
     }
     const del = e.target.closest("[data-del]");
@@ -136,6 +138,7 @@
       Store.removeTrack(del.dataset.del);
       render();
       window.Transicoes?.refresh();
+      window.Setlist?.refresh();
     }
   });
 

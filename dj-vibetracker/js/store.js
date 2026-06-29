@@ -7,7 +7,7 @@
 const Store = (() => {
   const KEY = "djvibetracker.v1";
 
-  const EMPTY = { tracks: [], setlists: [], reviews: [], transitions: [] };
+  const EMPTY = { tracks: [], setlists: [], reviews: [], transitions: [], currentSetlist: [] };
 
   /** Lê o estado completo do localStorage (com fallback seguro). */
   function read() {
@@ -68,10 +68,55 @@ const Store = (() => {
   function removeTrack(id) {
     const state = read();
     state.tracks = state.tracks.filter((t) => t.id !== id);
+    // remove referências órfãs no setlist atual
+    state.currentSetlist = state.currentSetlist.filter((sid) => sid !== id);
     write(state);
   }
   function setTrackStatus(id, status) {
     return updateTrack(id, { status });
+  }
+
+  // ---- Setlist atual (Épico 5) ----
+  // Armazena apenas os IDs das faixas, na ordem do set. As faixas em si
+  // vivem em `tracks` (fonte única); o setlist as referencia.
+  function getCurrentSetlist() { return read().currentSetlist; }
+
+  function addToSetlist(trackId) {
+    const state = read();
+    if (!state.currentSetlist.includes(trackId)) {
+      state.currentSetlist.push(trackId);
+      write(state);
+    }
+    return state.currentSetlist;
+  }
+  function removeFromSetlist(trackId) {
+    const state = read();
+    state.currentSetlist = state.currentSetlist.filter((id) => id !== trackId);
+    write(state);
+    return state.currentSetlist;
+  }
+  function moveInSetlist(trackId, dir) {
+    const state = read();
+    const list = state.currentSetlist;
+    const i = list.indexOf(trackId);
+    if (i < 0) return list;
+    const j = i + dir;
+    if (j < 0 || j >= list.length) return list;
+    [list[i], list[j]] = [list[j], list[i]];
+    write(state);
+    return list;
+  }
+  /** Reordena por uma nova lista completa de IDs (usado pelo drag-and-drop). */
+  function setSetlistOrder(ids) {
+    const state = read();
+    state.currentSetlist = ids;
+    write(state);
+    return ids;
+  }
+  function clearSetlist() {
+    const state = read();
+    state.currentSetlist = [];
+    write(state);
   }
 
   // ---- Transições (Épico 3) ----
@@ -108,6 +153,7 @@ const Store = (() => {
     read, write, uuid,
     getTracks, getSetlists, getReviews, getTransitions,
     addTrack, updateTrack, removeTrack, setTrackStatus,
+    getCurrentSetlist, addToSetlist, removeFromSetlist, moveInSetlist, setSetlistOrder, clearSetlist,
     addTransition, removeTransition,
     setPendingBpm, consumePendingBpm,
   };
