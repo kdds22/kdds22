@@ -27,6 +27,48 @@
     if (t.energy) parts.push(`<span class="track__energy">${"●".repeat(t.energy)}${"○".repeat(5 - t.energy)}</span>`);
     return parts.length ? `<span class="setlist__meta">${parts.join(" · ")}</span>` : "";
   }
+  /* ---------- 5.2 Validador Harmônico (Roda Camelot) ---------- */
+  /** "8A" -> { n: 8, l: "A" }; null se formato inválido. */
+  function parseCamelot(key) {
+    const m = String(key || "").trim().toUpperCase().match(/^(\d{1,2})([AB])$/);
+    if (!m) return null;
+    const n = Number(m[1]);
+    if (n < 1 || n > 12) return null;
+    return { n, l: m[2] };
+  }
+
+  /**
+   * Compatibilidade harmônica entre dois tons Camelot.
+   * Compatível quando: mesmo tom; mesmo número e letras diferentes (8A↔8B);
+   * ou mesma letra com ±1 no número (com wraparound 12↔1).
+   * @returns {boolean|null} true/false, ou null se algum tom for inválido/ausente.
+   */
+  function checkHarmonicCompatibility(key1, key2) {
+    const a = parseCamelot(key1);
+    const b = parseCamelot(key2);
+    if (!a || !b) return null; // tom desconhecido — sem julgamento
+    if (a.n === b.n && a.l === b.l) return true;          // mesmo tom
+    if (a.n === b.n && a.l !== b.l) return true;          // mesma posição, letra diferente
+    if (a.l === b.l) {                                    // mesma letra, ±1 número
+      const diff = Math.abs(a.n - b.n);
+      return diff === 1 || diff === 11;                  // 11 cobre o wraparound 12↔1
+    }
+    return false;
+  }
+
+  /** HTML do conector de compatibilidade entre a faixa anterior e a atual. */
+  function harmonicConnector(prev, cur) {
+    const r = checkHarmonicCompatibility(prev.key, cur.key);
+    let cls, icon, text;
+    if (r === true)       { cls = "ok";      icon = "✅"; text = "Compatível"; }
+    else if (r === false) { cls = "warn";    icon = "⚠️"; text = "Tom incompatível"; }
+    else                  { cls = "unknown"; icon = "❔"; text = "Tom não informado"; }
+    return `<div class="setlist__harm setlist__harm--${cls}" title="${text}">
+      <span class="setlist__harm-icon" aria-hidden="true">${icon}</span>
+      <span class="setlist__harm-text">${text}</span>
+    </div>`;
+  }
+
   function trackMap() {
     const m = new Map();
     Store.getTracks().forEach((t) => m.set(t.id, t));
@@ -49,17 +91,20 @@
 
     $list.innerHTML = items.map((t, i) => `
       <li class="setlist__item" draggable="true" data-id="${t.id}">
-        <span class="setlist__pos">${i + 1}</span>
-        <span class="setlist__grip" aria-hidden="true">⠿</span>
-        <span class="setlist__info">
-          <span class="setlist__title">${escapeHtml(trackLabel(t))}</span>
-          ${metaLine(t)}
-        </span>
-        <span class="setlist__btns">
-          <button class="setlist__mv" data-mv="-1" data-id="${t.id}" title="Subir" aria-label="Subir"${i === 0 ? " disabled" : ""}>▲</button>
-          <button class="setlist__mv" data-mv="1" data-id="${t.id}" title="Descer" aria-label="Descer"${i === items.length - 1 ? " disabled" : ""}>▼</button>
-          <button class="setlist__rm" data-rm="${t.id}" title="Remover do set" aria-label="Remover">✕</button>
-        </span>
+        ${i > 0 ? harmonicConnector(items[i - 1], t) : ""}
+        <div class="setlist__row">
+          <span class="setlist__pos">${i + 1}</span>
+          <span class="setlist__grip" aria-hidden="true">⠿</span>
+          <span class="setlist__info">
+            <span class="setlist__title">${escapeHtml(trackLabel(t))}</span>
+            ${metaLine(t)}
+          </span>
+          <span class="setlist__btns">
+            <button class="setlist__mv" data-mv="-1" data-id="${t.id}" title="Subir" aria-label="Subir"${i === 0 ? " disabled" : ""}>▲</button>
+            <button class="setlist__mv" data-mv="1" data-id="${t.id}" title="Descer" aria-label="Descer"${i === items.length - 1 ? " disabled" : ""}>▼</button>
+            <button class="setlist__rm" data-rm="${t.id}" title="Remover do set" aria-label="Remover">✕</button>
+          </span>
+        </div>
       </li>`).join("");
   }
 
@@ -155,5 +200,5 @@
   // init
   renderAll();
 
-  window.Setlist = { refresh: renderAll };
+  window.Setlist = { refresh: renderAll, checkHarmonicCompatibility };
 })();

@@ -383,12 +383,25 @@ body {
 .setlist__empty { text-align: center; }
 
 .setlist__item {
-  display: flex; align-items: center; gap: 10px;
+  display: flex; flex-direction: column;
   background: var(--bg-elev-2); border: 1px solid var(--border);
   border-radius: var(--radius-sm); padding: 10px 12px;
   transition: opacity var(--t-fast), box-shadow var(--t-fast);
 }
 .setlist__item.is-dragging { opacity: 0.4; box-shadow: 0 0 0 2px var(--accent); }
+.setlist__row { display: flex; align-items: center; gap: 10px; }
+
+/* 5.2 Conector de compatibilidade harmônica */
+.setlist__harm {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.02em;
+  margin: -4px 0 8px; padding: 3px 8px; border-radius: 999px; align-self: flex-start;
+  border: 1px solid transparent;
+}
+.setlist__harm-icon { font-size: 12px; }
+.setlist__harm--ok      { color: var(--ok);     background: rgba(61, 220, 132, 0.12); border-color: rgba(61, 220, 132, 0.4); }
+.setlist__harm--warn    { color: var(--danger); background: rgba(255, 91, 91, 0.12);  border-color: rgba(255, 91, 91, 0.45); }
+.setlist__harm--unknown { color: var(--text-faint); background: var(--bg-elev); border-color: var(--border); }
 .setlist__pos {
   font-size: 13px; font-weight: 800; color: var(--accent); min-width: 18px; text-align: center;
   font-variant-numeric: tabular-nums;
