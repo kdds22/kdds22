@@ -275,6 +275,18 @@
       <h2 class="view__title">Setlist Flow</h2>
       <p class="view__hint">Monte a ordem do set. Arraste para reordenar (ou use as setas) e garanta a fluidez da energia.</p>
 
+      <!-- Feature 5.3: Vibe Curve (gráfico de energia) -->
+      <article class="card vibe">
+        <header class="card__header">
+          <h3 class="card__title">Vibe Curve</h3>
+          <span class="card__badge">ENERGIA</span>
+        </header>
+        <div class="vibe__wrap" id="vibeWrap">
+          <canvas id="vibeChart" height="180" aria-label="Gráfico da curva de energia do set"></canvas>
+          <p class="empty vibe__empty" id="vibeEmpty">Adicione faixas ao set para desenhar a jornada de energia.</p>
+        </div>
+      </article>
+
       <!-- Feature 5.1: Construtor de Set -->
       <article class="card setlist">
         <header class="card__header">

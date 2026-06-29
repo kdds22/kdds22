@@ -133,7 +133,101 @@
     }).join("");
   }
 
-  function renderAll() { renderSetlist(); renderLibrary(); }
+  /* ---------- 5.3 Vibe Curve (gráfico de energia) ---------- */
+  let vibeChart = null;
+  let chartTitles = [];
+
+  function setlistTracks() {
+    const map = trackMap();
+    return Store.getCurrentSetlist().map((id) => map.get(id)).filter(Boolean);
+  }
+
+  function renderChart() {
+    const canvas = document.getElementById("vibeChart");
+    const empty  = document.getElementById("vibeEmpty");
+    if (!canvas) return;
+
+    // CDN do Chart.js indisponível: degrada graciosamente
+    if (typeof Chart === "undefined") {
+      canvas.style.display = "none";
+      if (empty) { empty.hidden = false; empty.textContent = "Não foi possível carregar o gráfico (Chart.js)."; }
+      return;
+    }
+
+    const items = setlistTracks();
+    if (!items.length) {
+      if (vibeChart) { vibeChart.destroy(); vibeChart = null; }
+      canvas.style.display = "none";
+      if (empty) { empty.hidden = false; empty.textContent = "Adicione faixas ao set para desenhar a jornada de energia."; }
+      return;
+    }
+
+    canvas.style.display = "";
+    if (empty) empty.hidden = true;
+
+    const labels = items.map((_, i) => `${i + 1}`);
+    const data   = items.map((t) => (t.energy ? Number(t.energy) : null)); // gap p/ faixa sem energia
+    chartTitles  = items.map((t) => trackLabel(t));
+
+    if (vibeChart) {
+      vibeChart.data.labels = labels;
+      vibeChart.data.datasets[0].data = data;
+      vibeChart.update();
+      return;
+    }
+
+    const ctx = canvas.getContext("2d");
+    const grad = ctx.createLinearGradient(0, 0, 0, 180);
+    grad.addColorStop(0, "rgba(177, 75, 255, 0.35)");
+    grad.addColorStop(1, "rgba(177, 75, 255, 0.02)");
+
+    vibeChart = new Chart(canvas, {
+      type: "line",
+      data: {
+        labels,
+        datasets: [{
+          data,
+          borderColor: "#b14bff",
+          backgroundColor: grad,
+          borderWidth: 2,
+          fill: true,
+          tension: 0.35,
+          spanGaps: true,
+          pointBackgroundColor: "#b14bff",
+          pointRadius: 4,
+          pointHoverRadius: 6,
+        }],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              title: (it) => chartTitles[it[0].dataIndex] || "",
+              label: (it) => it.raw == null ? "Energia: —" : `Energia: ${it.raw}/5`,
+            },
+          },
+        },
+        scales: {
+          y: {
+            min: 0, max: 5,
+            ticks: { stepSize: 1, color: "#9a9aae" },
+            grid: { color: "rgba(150,150,170,0.15)" },
+            title: { display: true, text: "Energia", color: "#9a9aae" },
+          },
+          x: {
+            ticks: { color: "#9a9aae" },
+            grid: { display: false },
+            title: { display: true, text: "Posição no set", color: "#9a9aae" },
+          },
+        },
+      },
+    });
+  }
+
+  function renderAll() { renderSetlist(); renderLibrary(); renderChart(); }
 
   /* ---------- Drag and Drop (API nativa HTML5) ---------- */
   function getDragAfter(y) {
@@ -194,7 +288,11 @@
 
   // Re-render ao abrir a aba (faixas podem ter mudado no Acervo)
   document.getElementById("bottomNav")?.addEventListener("click", (e) => {
-    if (e.target.closest('[data-target="setlist"]')) renderAll();
+    if (e.target.closest('[data-target="setlist"]')) {
+      renderAll();
+      // o canvas só tem dimensões reais quando a aba fica visível
+      requestAnimationFrame(() => vibeChart && vibeChart.resize());
+    }
   });
 
   // init
