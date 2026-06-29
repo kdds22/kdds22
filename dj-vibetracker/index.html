@@ -131,6 +131,32 @@
           <label class="field"><span>Outro</span><input type="text" id="markOutro" inputmode="numeric" placeholder="min:seg" /></label>
         </div>
       </article>
+
+      <!-- Feature 2.2: Calculadora de Compassos -->
+      <article class="card calc">
+        <header class="card__header">
+          <h3 class="card__title">Calculadora de Compassos</h3>
+          <span class="card__badge">BARS</span>
+        </header>
+        <p class="mapper__sub">Quantos compassos (blocos de 4 batidas) cabem num intervalo de tempo.</p>
+
+        <div class="calc__inputs">
+          <label class="field">
+            <span>Tempo (min:seg)</span>
+            <input type="text" id="calcTime" inputmode="numeric" placeholder="ex: 1:30" value="1:00" />
+          </label>
+          <label class="field">
+            <span>BPM <span class="blurable">♪</span></span>
+            <input type="number" id="calcBpm" inputmode="numeric" min="40" max="300" placeholder="ex: 126" value="126" />
+          </label>
+        </div>
+
+        <div class="calc__result">
+          <div class="calc__big"><span id="calcBars">--</span><small>compassos</small></div>
+          <div class="calc__beats"><span id="calcBeats">--</span> batidas</div>
+        </div>
+        <p class="calc__hint" id="calcHint"></p>
+      </article>
     </section>
 
     <section class="view" id="view-transicoes" data-view="transicoes" hidden>

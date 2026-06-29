@@ -117,4 +117,60 @@
   });
 
   reset();
+
+  /* ==========================================================
+     Feature 2.2: Calculadora de Compassos
+     Regra: fração de minuto * BPM / 4 = compassos
+     (batidas = minutos * BPM ; compassos = batidas / 4)
+     ========================================================== */
+  (() => {
+    const $time  = document.getElementById("calcTime");
+    const $bpm   = document.getElementById("calcBpm");
+    const $bars  = document.getElementById("calcBars");
+    const $beats = document.getElementById("calcBeats");
+    const $hint  = document.getElementById("calcHint");
+    if (!$time) return;
+
+    /** "min:seg" (ou "seg") -> total de segundos, ou null se inválido. */
+    function parseTime(str) {
+      const v = String(str).trim();
+      if (!v) return null;
+      const parts = v.split(":");
+      let min = 0, sec = 0;
+      if (parts.length === 1) {
+        sec = Number(parts[0]);
+      } else {
+        min = Number(parts[0]);
+        sec = Number(parts[1]);
+      }
+      if (Number.isNaN(min) || Number.isNaN(sec) || min < 0 || sec < 0) return null;
+      return min * 60 + sec;
+    }
+
+    function compute() {
+      const totalSec = parseTime($time.value);
+      const bpm = Number($bpm.value);
+
+      if (totalSec === null || !bpm || bpm <= 0) {
+        $bars.textContent = "--";
+        $beats.textContent = "--";
+        $hint.textContent = totalSec === null ? "Informe o tempo como min:seg." : "Informe um BPM válido.";
+        return;
+      }
+
+      const minutes = totalSec / 60;          // fração de minuto
+      const beats = minutes * bpm;            // batidas no intervalo
+      const bars = beats / 4;                 // compassos (4 batidas cada)
+
+      $beats.textContent = beats.toFixed(1);
+      $bars.textContent = bars.toFixed(1);
+
+      const phrases = bars / 8;               // frases típicas de 8 compassos
+      $hint.textContent = `≈ ${phrases.toFixed(1)} frases de 8 compassos`;
+    }
+
+    $time.addEventListener("input", compute);
+    $bpm.addEventListener("input", compute);
+    compute();
+  })();
 })();
