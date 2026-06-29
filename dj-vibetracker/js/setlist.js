@@ -244,6 +244,7 @@
     const ids = [...$list.querySelectorAll(".setlist__item")].map((li) => li.dataset.id);
     Store.setSetlistOrder(ids);
     renderSetlist(); // re-render para corrigir numeração e estado das setas
+    renderChart();   // 5.3: a curva precisa refletir a nova ordem
   }
 
   $list.addEventListener("dragstart", (e) => {
@@ -269,7 +270,7 @@
   /* ---------- Cliques (delegação) ---------- */
   $list.addEventListener("click", (e) => {
     const mv = e.target.closest("[data-mv]");
-    if (mv) { Store.moveInSetlist(mv.dataset.id, Number(mv.dataset.mv)); renderSetlist(); renderLibrary(); return; }
+    if (mv) { Store.moveInSetlist(mv.dataset.id, Number(mv.dataset.mv)); renderSetlist(); renderChart(); return; }
     const rm = e.target.closest("[data-rm]");
     if (rm) { Store.removeFromSetlist(rm.dataset.rm); renderAll(); }
   });
