@@ -87,7 +87,50 @@
     <!-- ---------- DEMAIS SEÇÕES (placeholders dos próximos épicos) ---------- -->
     <section class="view" id="view-estrutura" data-view="estrutura" hidden>
       <h2 class="view__title">Estrutura Musical</h2>
-      <p class="view__placeholder">🚧 Épico 2 — em construção (Timestamp Sync &amp; Calculadora de Compassos).</p>
+      <p class="view__hint">Mapeie o fraseado da faixa. Dê Play junto com a música e marque cada bloco no tempo certo.</p>
+
+      <!-- Feature 2.1: Timestamp Sync -->
+      <article class="card mapper">
+        <header class="card__header">
+          <h3 class="card__title">Cronômetro de Mapeamento</h3>
+          <span class="card__badge">SYNC</span>
+        </header>
+
+        <div class="mapper__clock" id="mapClock" aria-live="off">00:00.0</div>
+
+        <div class="mapper__transport">
+          <button class="btn btn--primary" id="mapPlay" type="button">▶ Play</button>
+          <button class="btn btn--ghost" id="mapReset" type="button">↺ Reset</button>
+        </div>
+
+        <p class="mapper__sub">Toque no bloco quando ele começar na música:</p>
+        <div class="mapper__marks">
+          <button class="markbtn" data-mark="intro" type="button">
+            <span class="markbtn__label">Set Intro</span>
+            <span class="markbtn__val" data-val="intro">--:--</span>
+          </button>
+          <button class="markbtn" data-mark="break" type="button">
+            <span class="markbtn__label">Set Break</span>
+            <span class="markbtn__val" data-val="break">--:--</span>
+          </button>
+          <button class="markbtn" data-mark="drop" type="button">
+            <span class="markbtn__label">Set Drop</span>
+            <span class="markbtn__val" data-val="drop">--:--</span>
+          </button>
+          <button class="markbtn" data-mark="outro" type="button">
+            <span class="markbtn__label">Set Outro</span>
+            <span class="markbtn__val" data-val="outro">--:--</span>
+          </button>
+        </div>
+
+        <!-- Campos editáveis (também recebem o valor capturado) -->
+        <div class="mapper__fields">
+          <label class="field"><span>Intro</span><input type="text" id="markIntro" inputmode="numeric" placeholder="min:seg" /></label>
+          <label class="field"><span>Break</span><input type="text" id="markBreak" inputmode="numeric" placeholder="min:seg" /></label>
+          <label class="field"><span>Drop</span><input type="text" id="markDrop" inputmode="numeric" placeholder="min:seg" /></label>
+          <label class="field"><span>Outro</span><input type="text" id="markOutro" inputmode="numeric" placeholder="min:seg" /></label>
+        </div>
+      </article>
     </section>
 
     <section class="view" id="view-transicoes" data-view="transicoes" hidden>
@@ -139,5 +182,6 @@
   <script src="js/store.js" defer></script>
   <script src="js/app.js" defer></script>
   <script src="js/taptempo.js" defer></script>
+  <script src="js/estrutura.js" defer></script>
 </body>
 </html>
