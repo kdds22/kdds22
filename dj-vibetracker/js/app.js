@@ -45,6 +45,30 @@ const App = (() => {
       localStorage.setItem("djvibetracker.blindMode", toggle.checked ? "1" : "0");
       toast(toggle.checked ? "🙈 Modo Cego ativado" : "👁️ Modo Cego desativado");
     });
+
+    // "Espiar": manter pressionado em um .blurable revela o valor.
+    // Delegação no body para alcançar elementos criados dinamicamente
+    // (ex.: cards de faixa do Épico 4) sem re-cabear listeners.
+    const startPeek = (e) => {
+      if (!document.body.classList.contains("blind-mode")) return;
+      const el = e.target.closest(".blurable");
+      if (el) el.classList.add("is-peeking");
+    };
+    const endPeek = () => {
+      document.querySelectorAll(".blurable.is-peeking")
+        .forEach((el) => el.classList.remove("is-peeking"));
+    };
+    document.body.addEventListener("pointerdown", startPeek);
+    document.body.addEventListener("pointerup", endPeek);
+    document.body.addEventListener("pointercancel", endPeek);
+    document.body.addEventListener("pointerleave", endPeek, true);
+  }
+
+  /* ---------- Helper público: marcar metadados como ocultáveis ----------
+     Usado pelos demais módulos ao renderizar BPM/Tom de faixas. */
+  function blurable(value, label = "") {
+    const title = label ? ` title="${label}"` : "";
+    return `<span class="blurable"${title}>${value}</span>`;
   }
 
   function init() {
@@ -54,7 +78,7 @@ const App = (() => {
 
   document.addEventListener("DOMContentLoaded", init);
 
-  return { navigateTo, toast };
+  return { navigateTo, toast, blurable };
 })();
 
 window.App = App;

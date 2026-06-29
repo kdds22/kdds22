@@ -179,6 +179,18 @@ body {
   color: var(--accent-2); font-weight: 600;
 }
 
+/* ===================== BLIND DEMO ===================== */
+.blind-demo { margin-top: var(--gap); }
+.blind-demo__text { font-size: 14px; color: var(--text-dim); margin-bottom: 16px; }
+.blind-demo__chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.meta-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 600; color: var(--text-dim);
+  background: var(--bg-elev-2); border: 1px solid var(--border);
+  padding: 8px 12px; border-radius: 999px;
+}
+.meta-chip .blurable { color: var(--text); font-weight: 800; font-variant-numeric: tabular-nums; }
+
 /* ===================== BOTÕES ===================== */
 .btn {
   flex: 1; padding: 14px 16px; border-radius: var(--radius-sm);
@@ -226,12 +238,41 @@ body {
 }
 .toast.is-visible { opacity: 1; translate: -50% 0; }
 
-/* ===================== BLIND MODE (Feature 1.2) ===================== */
+/* ===================== BLIND MODE (Feature 1.2) =====================
+   Convenção: qualquer elemento que exiba BPM ou Tom (Key) deve receber
+   a classe .blurable. Quando body.blind-mode está ativo, esses valores
+   ficam borrados, forçando o DJ a mixar de ouvido. Mantendo pressionado
+   (press-and-hold) é possível "espiar" o valor temporariamente. */
 body.blind-mode .blurable {
-  filter: blur(7px); user-select: none; cursor: not-allowed;
+  filter: blur(7px);
+  user-select: none; -webkit-user-select: none;
+  cursor: help;
+  position: relative;
   transition: filter var(--t);
 }
-body.blind-mode .blurable:hover { filter: blur(7px); }
+/* "Espiar": revela enquanto pressionado/focado */
+body.blind-mode .blurable.is-peeking,
+body.blind-mode .blurable:active {
+  filter: blur(0);
+}
+
+/* Indicador visual de que o Modo Cego está ativo */
+body.blind-mode .app-header {
+  box-shadow: inset 0 -2px 0 var(--accent);
+}
+body.blind-mode::after {
+  content: "🙈 Modo Cego ativo — mixe de ouvido";
+  position: fixed;
+  bottom: calc(var(--nav-h) + 8px + env(safe-area-inset-bottom, 0px));
+  left: 50%; translate: -50% 0;
+  z-index: 25;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.02em;
+  color: var(--accent);
+  background: rgba(177, 75, 255, 0.12);
+  border: 1px solid var(--accent);
+  padding: 5px 12px; border-radius: 999px;
+  pointer-events: none; white-space: nowrap;
+}
 
 /* Acessibilidade: reduzir movimento */
 @media (prefers-reduced-motion: reduce) {
