@@ -305,8 +305,42 @@
     </section>
 
     <section class="view" id="view-review" data-view="review" hidden>
-      <h2 class="view__title">Autoavaliação</h2>
-      <p class="view__placeholder">🚧 Épico 6 — em construção (Set Review Journal).</p>
+      <h2 class="view__title">Diário de Bordo</h2>
+      <p class="view__hint">Pós-treino: registre o que funcionou e o que precisa melhorar. Revisar erros é o que acelera sua evolução.</p>
+
+      <!-- Feature 6.1: Set Review Journal -->
+      <article class="card review-form">
+        <header class="card__header">
+          <h3 class="card__title">Nova avaliação</h3>
+          <span class="card__badge">POST-MORTEM</span>
+        </header>
+
+        <div class="review-form__grid">
+          <label class="field">
+            <span>Data do treino</span>
+            <input type="date" id="reviewDate" />
+          </label>
+          <label class="field">
+            <span>Duração (min)</span>
+            <input type="number" id="reviewDuration" inputmode="numeric" min="1" max="600" placeholder="60" />
+          </label>
+        </div>
+
+        <label class="field">
+          <span>✅ O que ficou bom?</span>
+          <textarea id="reviewGood" rows="3" placeholder="Músicas que combinaram, transições perfeitas…"></textarea>
+        </label>
+        <label class="field">
+          <span>⚠️ O que precisa melhorar?</span>
+          <textarea id="reviewBad" rows="3" placeholder="Erros de beatmatch, volume clipando, choque de tons…"></textarea>
+        </label>
+
+        <button class="btn btn--primary review-form__save" id="reviewSave" type="button">💾 Salvar avaliação</button>
+      </article>
+
+      <!-- Histórico de treinos -->
+      <h3 class="section-label">Histórico de treinos</h3>
+      <div class="reviews" id="reviewsList"></div>
     </section>
   </main>
 
@@ -342,5 +376,6 @@
   <script src="js/acervo.js" defer></script>
   <script src="js/transicoes.js" defer></script>
   <script src="js/setlist.js" defer></script>
+  <script src="js/review.js" defer></script>
 </body>
 </html>

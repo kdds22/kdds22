@@ -239,6 +239,12 @@ body {
   font-size: 15px; font-variant-numeric: tabular-nums;
 }
 .field input:focus { outline: none; border-color: var(--accent); }
+.field textarea {
+  padding: 10px 12px; border-radius: var(--radius-sm);
+  background: var(--bg); border: 1px solid var(--border); color: var(--text);
+  font: inherit; font-size: 15px; resize: vertical; min-height: 64px;
+}
+.field textarea:focus { outline: none; border-color: var(--accent); }
 
 /* ===================== CALCULADORA DE COMPASSOS (Feature 2.2) ===================== */
 .calc { margin-top: var(--gap); }
@@ -520,3 +526,42 @@ body.blind-mode::after {
 @media (prefers-reduced-motion: reduce) {
   * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
+
+/* ===================== DIÁRIO DE BORDO (Épico 6 — Feature 6.1) ===================== */
+.review-form__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+.review-form .field { margin-bottom: 14px; }
+.review-form__save { width: 100%; margin-top: 4px; }
+
+.reviews { display: flex; flex-direction: column; gap: 10px; }
+
+.review {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); overflow: hidden;
+}
+.review__summary {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 14px 16px; cursor: pointer; list-style: none;
+  font-weight: 700; color: var(--text);
+}
+.review__summary::-webkit-details-marker { display: none; }
+.review__summary::before {
+  content: "▸"; color: var(--text-dim); font-size: 12px;
+  transition: transform var(--t); display: inline-block;
+}
+.review[open] .review__summary::before { transform: rotate(90deg); }
+.review__date { flex: 1; font-variant-numeric: tabular-nums; }
+.review__del {
+  background: none; border: none; color: var(--text-dim);
+  font-size: 16px; cursor: pointer; padding: 4px 6px; border-radius: var(--radius-sm);
+}
+.review__del:hover { color: #ff6b6b; background: rgba(255, 107, 107, 0.1); }
+
+.review__body { padding: 0 16px 16px; display: flex; flex-direction: column; gap: 12px; }
+.review__block {
+  padding: 12px; border-radius: var(--radius-sm); background: var(--bg-elev-2);
+  border-left: 3px solid var(--border);
+}
+.review__block--good { border-left-color: #3ddc84; }
+.review__block--bad  { border-left-color: #ffb14b; }
+.review__label { display: block; font-size: 12px; font-weight: 700; color: var(--text-dim); margin-bottom: 4px; }
+.review__text { margin: 0; font-size: 14px; line-height: 1.5; color: var(--text); }

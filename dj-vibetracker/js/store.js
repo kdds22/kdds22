@@ -119,6 +119,20 @@ const Store = (() => {
     write(state);
   }
 
+  // ---- Diário de Bordo / Reviews (Épico 6) ----
+  function addReview(data) {
+    const state = read();
+    const item = { id: uuid(), createdAt: Date.now(), ...data };
+    state.reviews.unshift(item);
+    write(state);
+    return item;
+  }
+  function removeReview(id) {
+    const state = read();
+    state.reviews = state.reviews.filter((r) => r.id !== id);
+    write(state);
+  }
+
   // ---- Transições (Épico 3) ----
   function addTransition(recipe) {
     const state = read();
@@ -154,6 +168,7 @@ const Store = (() => {
     getTracks, getSetlists, getReviews, getTransitions,
     addTrack, updateTrack, removeTrack, setTrackStatus,
     getCurrentSetlist, addToSetlist, removeFromSetlist, moveInSetlist, setSetlistOrder, clearSetlist,
+    addReview, removeReview,
     addTransition, removeTransition,
     setPendingBpm, consumePendingBpm,
   };
