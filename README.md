@@ -9,8 +9,8 @@ Tech Lead na **HAVAN**, em Brusque/SC (natural de Aracaju/SE). Hoje construo apl
 
 ### Projetos pessoais recentes
 - **[arXiv AI Insights](https://github.com/kdds22/arxiv-ai-insights)**: curadoria diária de artigos do arXiv sobre LLMs, agentes e sistemas multiagente, com resumos em linguagem simples e aplicações práticas.
-- **FalaEco** *(privado)*: plataforma para aprender inglês com repetição espaçada (FSRS), shadowing avaliado por IA, simulador de conversa e coach diário.
-- **EDN, Engenharia dos Naturais** *(privado)*: plataforma de treino para atletas naturais, com rotinas geradas por um sistema multiagente (orquestrador, agentes por dia e avaliador), motor de progressão e periodização. Feita com FastAPI, Next.js, Supabase e Gemini.
+- **[FalaEco](https://falaeco.com)**: plataforma para aprender inglês com repetição espaçada (FSRS), shadowing avaliado por IA, simulador de conversa e coach diário.
+- **[EDN, Engenharia dos Naturais](https://ednfit.com.br)**: plataforma de treino para atletas naturais, com rotinas geradas por um sistema multiagente (orquestrador, agentes por dia e avaliador), motor de progressão e periodização. Feita com FastAPI, Next.js, Supabase e Gemini.
 
 ### Stack
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
